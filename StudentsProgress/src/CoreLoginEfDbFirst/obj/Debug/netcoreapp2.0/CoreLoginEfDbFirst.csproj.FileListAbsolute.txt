@@ -1,0 +1,84 @@
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\bundleconfig.json
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.deps.json
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.json
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.dev.json
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.csprojAssemblyReference.cache
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfoInputs.cache
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfo.cs
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Downloads\CoreLoginEfDbFirst\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\bundleconfig.json
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.deps.json
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.json
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.dev.json
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.csprojAssemblyReference.cache
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfoInputs.cache
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfo.cs
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Desktop\CoreLoginEfDbFirst\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\bundleconfig.json
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.deps.json
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.json
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.dev.json
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.csprojAssemblyReference.cache
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfoInputs.cache
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfo.cs
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Desktop\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\bundleconfig.json
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.deps.json
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.json
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.dev.json
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.csprojAssemblyReference.cache
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfoInputs.cache
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfo.cs
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Desktop\Нова папка\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\bundleconfig.json
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.deps.json
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.json
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.dev.json
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.csprojAssemblyReference.cache
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfoInputs.cache
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfo.cs
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Downloads\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\bundleconfig.json
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.deps.json
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.json
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.dev.json
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.csprojAssemblyReference.cache
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfoInputs.cache
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfo.cs
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\Users\IgorB\Desktop\StudentsProgress\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
