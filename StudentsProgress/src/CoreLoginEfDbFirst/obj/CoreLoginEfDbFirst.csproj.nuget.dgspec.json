@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\IgorB\\Desktop\\StudentsProgress\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj": {}
+    "C:\\Users\\HP\\Desktop\\student-s-progress--master\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj": {}
   },
   "projects": {
-    "C:\\Users\\IgorB\\Desktop\\StudentsProgress\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj": {
+    "C:\\Users\\HP\\Desktop\\student-s-progress--master\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\IgorB\\Desktop\\StudentsProgress\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\student-s-progress--master\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj",
         "projectName": "CoreLoginEfDbFirst",
-        "projectPath": "C:\\Users\\IgorB\\Desktop\\StudentsProgress\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj",
-        "packagesPath": "C:\\Users\\IgorB\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\IgorB\\Desktop\\StudentsProgress\\StudentsProgress\\src\\CoreLoginEfDbFirst\\obj\\",
+        "projectPath": "C:\\Users\\HP\\Desktop\\student-s-progress--master\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\student-s-progress--master\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\IgorB\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,7 +78,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

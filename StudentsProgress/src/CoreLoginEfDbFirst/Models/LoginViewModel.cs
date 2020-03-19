@@ -19,11 +19,11 @@ namespace StudentsProgress.Models
         public string Username { get; set; }
 
         [Required]
-        [Display(Name = "First Name")]
+        [Display(Name = "Name")]
         public string FirstName { get; set; }
 
         [Required]
-        [Display(Name = "Second Name")]
+        [Display(Name = "Surname")]
         public string SecondName { get; set; }
 
 
