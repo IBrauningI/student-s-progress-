@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zt1CqpNSxA9N5A+mBwArirAT13Y27NU1qEuoRdcEVKjLV8XM9J/vQpA6qIfG+RB+OlWUO2h6u9mitn3Iw1iGRQ==",
+  "dgSpecHash": "hE/pjvkWESmBNXDqZIJSIcEFtjSpirr88q5k/u9FKBpGgKR31Guq4JorJQ2AcRzNcRo1R9aCrUk6Gl3agSDvtg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Desktop\\student-s-progress--master\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj",
+  "projectFilePath": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\libuv\\1.10.0\\libuv.1.10.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.applicationinsights\\2.4.0\\microsoft.applicationinsights.2.4.0.nupkg.sha512",
