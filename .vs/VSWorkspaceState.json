@@ -2,7 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\StudentsProgress",
-    "\\StudentsProgress\\src"
+    "\\StudentsProgress\\src",
+    "\\StudentsProgress\\src\\StudentPro",
+    "\\StudentsProgress\\src\\StudentPro\\StudentPro",
+    "\\StudentsProgress\\src\\StudentPro\\StudentPro\\wwwroot",
+    "\\StudentsProgress\\src\\StudentPro\\StudentPro\\wwwroot\\css"
   ],
+  "SelectedNode": "\\StudentsProgress\\src\\StudentPro\\StudentPro.sln",
   "PreviewInSolutionExplorer": false
 }

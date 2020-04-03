@@ -8501,23 +8501,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ira\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj",
+      "projectUniqueName": "C:\\Users\\ira\\Source\\Repos\\IBrauningI\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj",
       "projectName": "StudentPro",
-      "projectPath": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\obj\\",
+      "projectPath": "C:\\Users\\ira\\Source\\Repos\\IBrauningI\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj",
+      "packagesPath": "C:\\Users\\ira\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ira\\Source\\Repos\\IBrauningI\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ira\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8584,7 +8580,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
