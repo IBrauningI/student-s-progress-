@@ -1,4 +1,7 @@
-﻿using System;
+﻿// <copyright file="IdentityHostingStartup.cs" company="StudentPro">
+//     Company copyright tag.
+// </copyright>
+using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -8,13 +11,15 @@ using Microsoft.Extensions.DependencyInjection;
 using StudentPro.Data;
 
 [assembly: HostingStartup(typeof(StudentPro.Areas.Identity.IdentityHostingStartup))]
+
 namespace StudentPro.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
+            builder.ConfigureServices((context, services) => 
+            {
             });
         }
     }
