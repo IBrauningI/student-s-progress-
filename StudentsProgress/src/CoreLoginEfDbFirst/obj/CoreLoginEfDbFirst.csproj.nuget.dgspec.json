@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\git\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj": {}
+    "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\git\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj": {
+    "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\git\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj",
         "projectName": "CoreLoginEfDbFirst",
-        "projectPath": "C:\\Users\\HP\\Desktop\\git\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\CoreLoginEfDbFirst.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\git\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\CoreLoginEfDbFirst\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

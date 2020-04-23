@@ -802,3 +802,4 @@ C:\Users\HP\Desktop\git\student-s-progress-\StudentsProgress\src\StudentPro\Stud
 C:\Users\HP\Desktop\git\student-s-progress-\StudentsProgress\src\StudentPro\StudentPro\obj\Debug\netcoreapp3.1\StudentPro.dll
 C:\Users\HP\Desktop\git\student-s-progress-\StudentsProgress\src\StudentPro\StudentPro\obj\Debug\netcoreapp3.1\StudentPro.pdb
 C:\Users\HP\Desktop\git\student-s-progress-\StudentsProgress\src\StudentPro\StudentPro\obj\Debug\netcoreapp3.1\StudentPro.genruntimeconfig.cache
+C:\Users\HP\Desktop\StudentsPro\student-s-progress-\StudentsProgress\src\StudentPro\StudentPro\obj\Debug\netcoreapp3.1\Razor\Views\Home\Rating.cshtml.g.cs

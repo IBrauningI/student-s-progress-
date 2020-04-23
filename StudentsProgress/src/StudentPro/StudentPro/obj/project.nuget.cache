@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UinPJ2Gi7ztz7x5zjZRKct5jMbZq/GY8cw5ZSZRTqvUkT8AghgnsIVw2VnsToeM1nf3pFKHI/5WWMSsMe5Mhew==",
+  "dgSpecHash": "NCiSd65c5wjTi/9HREVyHnPWmJ0GRqgO3e5a92OMb9Dyf5+fMZLGSJGvwbf0DXyR4Gbz1U9OLpiTSefAdRvr2Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Desktop\\git\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj",
+  "projectFilePath": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.1\\microsoft.aspnetcore.cryptography.internal.3.1.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.1\\microsoft.aspnetcore.cryptography.keyderivation.3.1.1.nupkg.sha512",
