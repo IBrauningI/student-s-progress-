@@ -22,5 +22,7 @@ namespace StudentPro.Areas.Identity
             {
             });
         }
+        public string GroupName { get; set; }
+        public string FacultyName { get; set; }
     }
 }

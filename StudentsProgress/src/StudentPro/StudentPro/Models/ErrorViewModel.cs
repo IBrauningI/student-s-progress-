@@ -10,5 +10,8 @@ namespace StudentPro.Models
         public string RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(this.RequestId);
+
+        public string GroupName { get; set; }
+        public string FacultyName { get; set; }
     }
 }

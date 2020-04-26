@@ -17,22 +17,34 @@
         {
             this.logger = logger;
         }
-
         public IActionResult Index()
         {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();
         }
-        public IActionResult Rating()
+        public IActionResult Attendance()
+        {
+            return View();
+        }
+        public IActionResult Account()
         {
             return View();
         }
 
+        public string StudentId(int id)
+        {
+            return $"id= {id}";
+        }
 
+        
+        //public IActionResult Manage()
+        //{
+        //    return RedirectToAction("/Areas/Identity/Pages/Account/Manage/Index.cshtml");
+        //    //return View();
+        //}
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
