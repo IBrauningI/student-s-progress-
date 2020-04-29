@@ -32,12 +32,12 @@ namespace StudentsProgress.Web.Data
                 new Group { Id = 3, Name = "AMI-33" });
 
             builder.Entity<Subject>().HasData(
-                new Subject { Id = 1, Name = "Programming" },
-                new Subject { Id = 2, Name = "Math" },
-                new Subject { Id = 3, Name = "History" },
-                new Subject { Id = 4, Name = "Database" },
-                new Subject { Id = 5, Name = "Start-up" },
-                new Subject { Id = 6, Name = "Cryptology" });
+                new Subject { Id = 1, Name = "Programming", LecturesCount = 32 },
+                new Subject { Id = 2, Name = "Math", LecturesCount = 16 },
+                new Subject { Id = 3, Name = "History", LecturesCount = 10 },
+                new Subject { Id = 4, Name = "Database", LecturesCount = 32 },
+                new Subject { Id = 5, Name = "Start-up", LecturesCount = 10 },
+                new Subject { Id = 6, Name = "Cryptology", LecturesCount = 16 });
         }
     }
 }

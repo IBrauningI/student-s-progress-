@@ -257,37 +257,37 @@ namespace StudentsProgress.Web.Data.Migrations
                         new
                         {
                             Id = 1,
-                            LecturesCount = 0,
+                            LecturesCount = 32,
                             Name = "Programming"
                         },
                         new
                         {
                             Id = 2,
-                            LecturesCount = 0,
+                            LecturesCount = 16,
                             Name = "Math"
                         },
                         new
                         {
                             Id = 3,
-                            LecturesCount = 0,
+                            LecturesCount = 10,
                             Name = "History"
                         },
                         new
                         {
                             Id = 4,
-                            LecturesCount = 0,
+                            LecturesCount = 32,
                             Name = "Database"
                         },
                         new
                         {
                             Id = 5,
-                            LecturesCount = 0,
+                            LecturesCount = 10,
                             Name = "Start-up"
                         },
                         new
                         {
                             Id = 6,
-                            LecturesCount = 0,
+                            LecturesCount = 16,
                             Name = "Cryptology"
                         });
                 });
