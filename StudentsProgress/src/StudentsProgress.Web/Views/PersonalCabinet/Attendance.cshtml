@@ -1,0 +1,39 @@
+﻿@model IEnumerable<StudentsProgress.Web.Models.AttendanceViewModel>
+
+@{
+    ViewData["Title"] = "Attendance";
+}
+
+<h1>Attendance</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LecturesCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassesCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LecturesCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassesCount)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

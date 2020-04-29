@@ -1,0 +1,39 @@
+﻿@model IEnumerable<StudentsProgress.Web.Models.RatingViewModel>
+
+@{
+    ViewData["Title"] = "Rating";
+}
+
+<h1>Rating</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SemestrPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SumPoints)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SemestrPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SumPoints)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

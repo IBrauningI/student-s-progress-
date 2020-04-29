@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj": {}
+    "C:\\test\\RomanivMarta\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj": {
+    "C:\\test\\RomanivMarta\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj",
+        "projectUniqueName": "C:\\test\\RomanivMarta\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj",
         "projectName": "StudentPro",
-        "projectPath": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\StudentsPro\\student-s-progress-\\StudentsProgress\\src\\StudentPro\\StudentPro\\obj\\",
+        "projectPath": "C:\\test\\RomanivMarta\\StudentsProgress\\src\\StudentPro\\StudentPro\\StudentPro.csproj",
+        "packagesPath": "C:\\Users\\mamah\\.nuget\\packages\\",
+        "outputPath": "C:\\test\\RomanivMarta\\StudentsProgress\\src\\StudentPro\\StudentPro\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mamah\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,6 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://172.30.95.121/nuget/NgDP-Debug/": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -88,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
