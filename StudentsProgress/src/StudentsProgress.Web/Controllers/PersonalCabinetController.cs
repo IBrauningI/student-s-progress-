@@ -1,45 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using StudentsProgress.Web.Data.Entities;
+using Microsoft.EntityFrameworkCore;
+using StudentsProgress.Web.Data;
 using StudentsProgress.Web.Data.Identity;
-using StudentsProgress.Web.Data.Repository;
 using StudentsProgress.Web.Models;
 
 namespace StudentsProgress.Web.Controllers
 {
     public class PersonalCabinetController : Controller
     {
-        private readonly IGenericRepository<Student> studentRepository;
-        private readonly IGenericRepository<Group> groupRepository;
-        private readonly IGenericRepository<UserRating> ratingRepository;
-        private readonly IGenericRepository<Attendance> attendanceRepository;
-        private readonly IGenericRepository<Subject> subjectRepository;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly ApplicationDbContext context;
 
         public PersonalCabinetController(
-            IGenericRepository<Student> studentRepository,
-            IGenericRepository<Group> groupRepository,
             UserManager<ApplicationUser> userManager,
-            IGenericRepository<UserRating> ratingRepository,
-            IGenericRepository<Attendance> attendanceRepository, IGenericRepository<Subject> subjectRepository)
+            ApplicationDbContext context)
         {
-            this.studentRepository = studentRepository;
-            this.groupRepository = groupRepository;
             this.userManager = userManager;
-            this.ratingRepository = ratingRepository;
-            this.attendanceRepository = attendanceRepository;
-            this.subjectRepository = subjectRepository;
+            this.context = context;
         }
 
         public async Task<IActionResult> AccountManager()
         {
             var user = await userManager.GetUserAsync(User);
-            var student = studentRepository.Get(x => x.UserId == user.Id).FirstOrDefault();
-            var group = groupRepository.FindById(student.GroupId);
+            var student = context.Students
+                .Include(x => x.Group)
+                .FirstOrDefault(x => x.UserId == user.Id);
+
+            if (student == null)
+            {
+                throw new Exception("User is not found");
+            }
 
             var viewModel = new AccountViewModel
             {
@@ -47,7 +41,7 @@ namespace StudentsProgress.Web.Controllers
                 LastName = user.LastName,
                 Email = user.Email,
                 Faculty = student.Faculty,
-                Group = group.Name,
+                Group = student.Group.Name,
             };
 
             return View(viewModel);
@@ -56,15 +50,24 @@ namespace StudentsProgress.Web.Controllers
         public async Task<IActionResult> Rating()
         {
             var user = await userManager.GetUserAsync(User);
-            var student = studentRepository.Get(x => x.UserId == user.Id).FirstOrDefault();
-            var ratings = ratingRepository.Get(x => x.StudentId == student.Id);
-            var subjects = subjectRepository.Get();
+            var student = context.Students
+                .FirstOrDefault(x => x.UserId == user.Id);
+
+            if (student == null)
+            {
+                throw new Exception("User is not found");
+            }
+
+            var ratings = context.UserRatings
+                .Include(x => x.Subject)
+                .Where(x => x.StudentId == student.Id);
+
 
             var viewModel = ratings.Select(rating => new RatingViewModel
             {
                 SemestrPoints = rating.SemestrPoints,
                 SumPoints = rating.SumPoints,
-                Subject = subjects.FirstOrDefault(s => s.Id == rating.SubjectId)?.Name,
+                Subject = rating.Subject.Name,
             });
 
             return View(viewModel);
@@ -73,18 +76,32 @@ namespace StudentsProgress.Web.Controllers
         public async Task<IActionResult> Attendance()
         {
             var user = await userManager.GetUserAsync(User);
-            var student = studentRepository.Get(x => x.UserId == user.Id).FirstOrDefault();
-            var attendances = attendanceRepository.Get(x => x.StudentId == student.Id);
-            var subjects = subjectRepository.Get();
+            var student = context.Students
+                .FirstOrDefault(x => x.UserId == user.Id);
+
+            if (student == null)
+            {
+                throw new Exception("User is not found");
+            }
+
+            var attendances = context.Attendances
+                .Include(x => x.Subject)
+                .Where(x => x.StudentId == student.Id);
 
             var viewModel = attendances.Select(attendance => new AttendanceViewModel
             {
                 PassesCount = attendance.PassesCount,
-                LecturesCount = subjects.FirstOrDefault(s => s.Id == attendance.SubjectId)?.LecturesCount ?? 0,
-                Subject = subjects.FirstOrDefault(s => s.Id == attendance.SubjectId)?.Name,
+                LecturesCount = attendance.Subject.LecturesCount,
+                Subject = attendance.Subject.Name,
             });
 
             return View(viewModel);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            context.Dispose();
         }
     }
 }

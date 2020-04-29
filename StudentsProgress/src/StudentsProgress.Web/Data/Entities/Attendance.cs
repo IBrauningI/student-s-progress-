@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using StudentsProgress.Web.Data.Identity;
 
 namespace StudentsProgress.Web.Data.Entities
 {

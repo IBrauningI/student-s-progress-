@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using StudentsProgress.Web.Data.Identity;
@@ -23,5 +23,9 @@ namespace StudentsProgress.Web.Data.Entities
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
+
+        public virtual List<UserRating> UserRatings { get; set; }
+
+        public virtual List<Attendance> Attendances { get; set; }
     }
 }

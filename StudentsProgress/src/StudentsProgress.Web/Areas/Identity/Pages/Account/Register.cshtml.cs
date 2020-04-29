@@ -11,9 +11,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using StudentsProgress.Web.Constants;
+using StudentsProgress.Web.Data;
+using StudentsProgress.Web.Data.Entities;
 using StudentsProgress.Web.Data.Identity;
 
 namespace StudentsProgress.Web.Areas.Identity.Pages.Account
@@ -25,17 +28,20 @@ namespace StudentsProgress.Web.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ApplicationDbContext _context;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _context = context;
         }
 
         [BindProperty]
@@ -44,6 +50,8 @@ namespace StudentsProgress.Web.Areas.Identity.Pages.Account
         public string ReturnUrl { get; set; }
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
+
+        public SelectList Groups { get; set; }
 
         public class InputModel
         {
@@ -80,12 +88,22 @@ namespace StudentsProgress.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [Display(Name = "Group")]
+            public int GroupId { get; set; }
+
+            [Required]
+            [Display(Name = "Faculty")]
+            public string Faculty { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            Groups = new SelectList(_context.Groups.ToList(),
+                "Id", "Name");
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -109,6 +127,25 @@ namespace StudentsProgress.Web.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     await _userManager.AddToRoleAsync(user, Roles.Student);
+
+                    // create student with his ratings and attendance
+                    var subjects = _context.Subjects.ToList();
+
+                    _context.Students.Add(new Student
+                    {
+                        Faculty = Input.Faculty,
+                        GroupId = Input.GroupId,
+                        UserId = user.Id,
+                        UserRatings = subjects.Select(x => new UserRating
+                        {
+                            SubjectId = x.Id,
+                        }).ToList(),
+                        Attendances = subjects.Select(x => new Attendance
+                        {
+                            SubjectId = x.Id,
+                        }).ToList(),
+                    });
+                    _context.SaveChanges();
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -138,6 +175,9 @@ namespace StudentsProgress.Web.Areas.Identity.Pages.Account
             }
 
             // If we got this far, something failed, redisplay form
+            Groups = new SelectList(_context.Groups.ToList(),
+                "Id", "Name");
+
             return Page();
         }
     }
