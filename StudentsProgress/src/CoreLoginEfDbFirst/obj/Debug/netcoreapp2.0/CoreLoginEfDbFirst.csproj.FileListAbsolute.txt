@@ -98,3 +98,17 @@ C:\Users\HP\Desktop\StudentsPro\student-s-progress-\StudentsProgress\src\CoreLog
 C:\Users\HP\Desktop\StudentsPro\student-s-progress-\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
 C:\Users\HP\Desktop\StudentsPro\student-s-progress-\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
 C:\Users\HP\Desktop\StudentsPro\student-s-progress-\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.genruntimeconfig.cache
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\appsettings.json
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\bundleconfig.json
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.deps.json
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.json
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.runtimeconfig.dev.json
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\bin\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.csprojAssemblyReference.cache
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfoInputs.cache
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.AssemblyInfo.cs
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.dll
+C:\test\RomanivMarta\StudentsProgress\src\CoreLoginEfDbFirst\obj\Debug\netcoreapp2.0\CoreLoginEfDbFirst.pdb

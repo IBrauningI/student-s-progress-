@@ -173,50 +173,6 @@ namespace StudentsProgress.Web.Data.Migrations
                     b.HasIndex("SubjectId");
 
                     b.ToTable("Attendances");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            PassesCount = 0,
-                            StudentId = 1,
-                            SubjectId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            PassesCount = 0,
-                            StudentId = 1,
-                            SubjectId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            PassesCount = 0,
-                            StudentId = 1,
-                            SubjectId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            PassesCount = 0,
-                            StudentId = 1,
-                            SubjectId = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            PassesCount = 0,
-                            StudentId = 1,
-                            SubjectId = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            PassesCount = 0,
-                            StudentId = 1,
-                            SubjectId = 6
-                        });
                 });
 
             modelBuilder.Entity("StudentsProgress.Web.Data.Entities.Group", b =>
@@ -277,15 +233,6 @@ namespace StudentsProgress.Web.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Students");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Faculty = "AMI",
-                            GroupId = 1,
-                            UserId = "138ea16f-0bbf-487b-b0f2-c824095d2634"
-                        });
                 });
 
             modelBuilder.Entity("StudentsProgress.Web.Data.Entities.Subject", b =>
@@ -371,56 +318,6 @@ namespace StudentsProgress.Web.Data.Migrations
                     b.HasIndex("SubjectId");
 
                     b.ToTable("UserRatings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            SemestrPoints = 0,
-                            StudentId = 1,
-                            SubjectId = 1,
-                            SumPoints = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            SemestrPoints = 0,
-                            StudentId = 1,
-                            SubjectId = 2,
-                            SumPoints = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            SemestrPoints = 0,
-                            StudentId = 1,
-                            SubjectId = 3,
-                            SumPoints = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            SemestrPoints = 0,
-                            StudentId = 1,
-                            SubjectId = 4,
-                            SumPoints = 0
-                        },
-                        new
-                        {
-                            Id = 5,
-                            SemestrPoints = 0,
-                            StudentId = 1,
-                            SubjectId = 5,
-                            SumPoints = 0
-                        },
-                        new
-                        {
-                            Id = 6,
-                            SemestrPoints = 0,
-                            StudentId = 1,
-                            SubjectId = 6,
-                            SumPoints = 0
-                        });
                 });
 
             modelBuilder.Entity("StudentsProgress.Web.Data.Identity.ApplicationUser", b =>
@@ -551,7 +448,7 @@ namespace StudentsProgress.Web.Data.Migrations
             modelBuilder.Entity("StudentsProgress.Web.Data.Entities.Attendance", b =>
                 {
                     b.HasOne("StudentsProgress.Web.Data.Entities.Student", "Student")
-                        .WithMany()
+                        .WithMany("Attendances")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -581,7 +478,7 @@ namespace StudentsProgress.Web.Data.Migrations
             modelBuilder.Entity("StudentsProgress.Web.Data.Entities.UserRating", b =>
                 {
                     b.HasOne("StudentsProgress.Web.Data.Entities.Student", "Student")
-                        .WithMany()
+                        .WithMany("UserRatings")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

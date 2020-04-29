@@ -116,28 +116,6 @@ namespace StudentsProgress.Web
             {
                 await userManager.AddToRoleAsync(admin, Roles.Admin);
             }
-
-            // create default Student
-            if (await userManager.FindByIdAsync("138ea16f-0bbf-487b-b0f2-c824095d2634") == null)
-            {
-                var student = new ApplicationUser
-                {
-                    Id = "138ea16f-0bbf-487b-b0f2-c824095d2634",
-                    FirstName = "Marta",
-                    LastName = "Romaniv",
-                    UserName = "marta.romaniv@gmail.com",
-                    PhoneNumber = "+38011223344",
-                    Email = "marta.romaniv@gmail.com",
-                    Birthdate = new DateTime(2000, 7, 7),
-                    EmailConfirmed = true,
-                };
-
-                var studentResult = await userManager.CreateAsync(student, password);
-                if (studentResult.Succeeded)
-                {
-                    await userManager.AddToRoleAsync(student, Roles.Student);
-                }
-            }
         }
     }
 }
