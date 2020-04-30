@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using StudentsProgress.Web.Constants;
 using StudentsProgress.Web.Data.Identity;
 using StudentsProgress.Web.Data.Repository;
+using SignalRChat.Hubs;
 
 namespace StudentsProgress.Web
 {
@@ -40,6 +41,7 @@ namespace StudentsProgress.Web
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSignalR();
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }
@@ -72,6 +74,7 @@ namespace StudentsProgress.Web
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chatHub");
             });
 
             CreateRoles(services).Wait();
