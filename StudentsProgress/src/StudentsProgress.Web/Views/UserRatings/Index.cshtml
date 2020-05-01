@@ -1,0 +1,62 @@
+﻿@model IEnumerable<StudentsProgress.Web.Data.Entities.UserRating>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Ratings</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Faculty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Group)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SemestrPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SumPoints)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Faculty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Group.Name)
+            </td>
+            <td>
+                @item.Student.User.LastName @item.Student.User.FirstName
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SemestrPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SumPoints)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

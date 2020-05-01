@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using StudentsProgress.Web.Constants
 @using StudentsProgress.Web.Data.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 
@@ -30,7 +31,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        @if (SignInManager.IsSignedIn(User))
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole(Roles.Student))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="PersonalCabinet" asp-action="AccountManager">Account Manager</a>
@@ -40,6 +41,18 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="PersonalCabinet" asp-action="Attendance">Attendance</a>
+                            </li>
+                        }
+                        else if (SignInManager.IsSignedIn(User) && User.IsInRole(Roles.Admin))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Groups" asp-action="Index">Groups</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="UserRatings" asp-action="Index">Student's rating</a>
                             </li>
                         }
                         else

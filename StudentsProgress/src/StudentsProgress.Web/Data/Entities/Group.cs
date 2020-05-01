@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentsProgress.Web.Data.Entities
@@ -11,5 +12,7 @@ namespace StudentsProgress.Web.Data.Entities
 
         [Required]
         public string Name { get; set; }
+
+        public List<Student> Students { get; set; }
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.Extensions.Hosting;
 using StudentsProgress.Web.Constants;
 using StudentsProgress.Web.Data.Identity;
 using StudentsProgress.Web.Data.Repository;
-using SignalRChat.Hubs;
+using StudentsProgress.Web.Hubs;
 
 namespace StudentsProgress.Web
 {

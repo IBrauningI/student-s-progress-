@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using StudentsProgress.Web.Models;
 
 namespace StudentsProgress.Web.Controllers
 {
+    [Authorize(Roles = "Student")]
     public class PersonalCabinetController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;

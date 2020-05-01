@@ -1,0 +1,56 @@
+﻿@model StudentsProgress.Web.Data.Entities.Group
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Group</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<br/>
+<br/>
+<h4>Students in group</h4>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Student
+        </th>
+        <th>
+            Email
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Students)
+    {
+        <tr>
+            <td>
+                @item.User.FirstName @item.User.LastName
+            </td>
+            <td>
+                @item.User.Email
+            </td>
+            <td>
+                <a asp-controller="Students" asp-action="Details" asp-route-callbackUrl="/Groups/Details/@item.GroupId" asp-route-id="@item.Id">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
