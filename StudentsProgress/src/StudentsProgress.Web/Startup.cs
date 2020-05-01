@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using StudentsProgress.Web.Data;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,7 @@ using StudentsProgress.Web.Constants;
 using StudentsProgress.Web.Data.Identity;
 using StudentsProgress.Web.Data.Repository;
 using StudentsProgress.Web.Hubs;
+using StudentsProgress.Web.Infrastructure;
 
 namespace StudentsProgress.Web
 {
@@ -42,6 +44,7 @@ namespace StudentsProgress.Web
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSignalR();
+            services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }
@@ -74,7 +77,7 @@ namespace StudentsProgress.Web
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
-                endpoints.MapHub<ChatHub>("/chatHub");
+                endpoints.MapHub<RatingNotificationHub>("/ratingNotificationHub");
             });
 
             CreateRoles(services).Wait();
