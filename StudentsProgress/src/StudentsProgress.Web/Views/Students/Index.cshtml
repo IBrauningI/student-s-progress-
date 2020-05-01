@@ -29,9 +29,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Group.Name)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
             <td>@item.User.Email</td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
