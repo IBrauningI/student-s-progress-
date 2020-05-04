@@ -14,6 +14,7 @@ using StudentsProgress.Web.Data.Identity;
 using StudentsProgress.Web.Data.Repository;
 using StudentsProgress.Web.Hubs;
 using StudentsProgress.Web.Infrastructure;
+using StudentsProgress.Web.Logics;
 
 namespace StudentsProgress.Web
 {
@@ -45,6 +46,8 @@ namespace StudentsProgress.Web
             services.AddRazorPages();
             services.AddSignalR();
             services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
+            services.AddScoped<IUserRatingsLogic, UserRatingsLogic>();
+            services.AddScoped<IAttendancesLogic, AttendancesLogic>();
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }

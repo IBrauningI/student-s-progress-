@@ -6,20 +6,20 @@ using StudentsProgress.Web.Logics;
 
 namespace StudentsProgress.Web.Controllers
 {
-    public class UserRatingsController : Controller
+    public class AttendancesController : Controller
     {
-        private readonly IUserRatingsLogic logic;
+        private readonly IAttendancesLogic logic;
 
-        public UserRatingsController(IUserRatingsLogic logic)
+        public AttendancesController(IAttendancesLogic logic)
         {
             this.logic = logic;
         }
 
         public async Task<IActionResult> Index()
         {
-            var ratings = await logic.GetUserRatings();
+            var attendances = await logic.GetAttendances();
 
-            return View(ratings);
+            return View(attendances);
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -29,13 +29,14 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var userRating = await logic.GetUserRating(id);
-            if (userRating == null)
+            var attendance = await logic.GetAttendance(id);
+
+            if (attendance == null)
             {
                 return NotFound();
             }
 
-            return View(userRating);
+            return View(attendance);
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -45,22 +46,24 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var userRating = await logic.GetUserRating(id);
+            var attendance = await logic.GetAttendance(id);
 
-            if (userRating == null)
+            if (attendance == null)
             {
                 return NotFound();
             }
-            ViewData["StudentId"] = logic.GetStudentsSelectList(userRating.StudentId);
-            ViewData["SubjectId"] = logic.GetSubjectsSelectList(userRating.SubjectId);
-            return View(userRating);
+
+            ViewData["StudentId"] = logic.GetStudentsSelectList(attendance.StudentId);
+            ViewData["SubjectId"] = logic.GetSubjectsSelectList(attendance.SubjectId);
+            
+            return View(attendance);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SemestrPoints,SumPoints,StudentId,SubjectId")] UserRating userRating)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PassesCount,StudentId,SubjectId")] Attendance attendance)
         {
-            if (id != userRating.Id)
+            if (id != attendance.Id)
             {
                 return NotFound();
             }
@@ -69,11 +72,11 @@ namespace StudentsProgress.Web.Controllers
             {
                 try
                 {
-                    await logic.UpdateUserRating(userRating);
+                    await logic.UpdateAttendance(attendance);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!logic.UserRatingExists(userRating.Id))
+                    if (!logic.AttendanceExists(attendance.Id))
                     {
                         return NotFound();
                     }
@@ -84,12 +87,11 @@ namespace StudentsProgress.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StudentId"] = logic.GetStudentsSelectList(userRating.StudentId);
-            ViewData["SubjectId"] = logic.GetSubjectsSelectList(userRating.SubjectId);
 
-            userRating = await logic.GetUserRating(id);
+            ViewData["StudentId"] = logic.GetStudentsSelectList(attendance.StudentId);
+            ViewData["SubjectId"] = logic.GetSubjectsSelectList(attendance.SubjectId);
 
-            return View(userRating);
+            return View(attendance);
         }
     }
 }
