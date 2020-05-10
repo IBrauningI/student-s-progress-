@@ -1,10 +1,7 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using StudentsProgress.Web.Data;
 using StudentsProgress.Web.Data.Entities;
 using StudentsProgress.Web.Logics;
 
@@ -20,7 +17,6 @@ namespace StudentsProgress.Web.Controllers
             this.logic = logic;
         }
 
-
         public async Task<IActionResult> Index()
         {
             var students = await logic.GetStudents();
@@ -28,24 +24,27 @@ namespace StudentsProgress.Web.Controllers
             return View(students);
         }
 
-
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string callbackUrl = "/Students")
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var students = await logic.GetStudents(id);
+            var student = await logic.GetStudent(id);
 
-            if (students == null)
+            if (student == null)
             {
                 return NotFound();
             }
 
-            return View(students);
-        }
+            ViewData["BackText"] = callbackUrl == "/Students" 
+                ? "Back to list"
+                : "Back to groups";
+            ViewData["CallbackUrl"] = callbackUrl;
 
+            return View(student);
+        }
 
         public async Task<IActionResult> Edit(int? id)
         {
@@ -54,23 +53,23 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var students = await logic.GetStudents(id);
+            var student = await logic.GetStudent(id);
 
-            if (students == null)
+            if (student == null)
             {
                 return NotFound();
             }
-            ViewData["GroupId"] = logic.GetStudentsSelectList(students.StudentId);
-            ViewData["UserId"] = logic.GetSubjectsSelectList(students.SubjectId);
-            return View(students);
-        }
 
+            ViewData["GroupId"] = logic.GetGroupsSelectList(student.GroupId);
+
+            return View(student);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Faculty,GroupId,UserId")] Student students)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Faculty,GroupId,UserId")] Student student)
         {
-            if (id != students.Id)
+            if (id != student.Id)
             {
                 return NotFound();
             }
@@ -79,11 +78,11 @@ namespace StudentsProgress.Web.Controllers
             {
                 try
                 {
-                    await logic.UpdateStudents(students);
+                    await logic.UpdateStudent(student);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!logic.StudentsExists(students.Id))
+                    if (!logic.StudentExists(student.Id))
                     {
                         return NotFound();
                     }
@@ -94,14 +93,13 @@ namespace StudentsProgress.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GroupId"] = logic.GetStudentsSelectList(students.StudentId);
-            ViewData["UserId"] = logic.GetSubjectsSelectList(students.SubjectId);
 
-            students = await logic.GetStudents(id);
+            ViewData["GroupId"] = logic.GetGroupsSelectList(student.GroupId);
 
-            return View(students);
+            student = await logic.GetStudent(id);
+
+            return View(student);
         }
-
 
         public async Task<IActionResult> Delete(int? id)
         {
@@ -110,7 +108,7 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var student = await logic.GetStudents();
+            var student = await logic.GetStudent(id);
             if (student == null)
             {
                 return NotFound();
@@ -119,15 +117,13 @@ namespace StudentsProgress.Web.Controllers
             return View(student);
         }
 
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var student = await logic.GetStudents();
+            var student = await logic.GetStudent(id);
+            await logic.DeleteStudent(student);
             return RedirectToAction(nameof(Index));
         }
-
-
     }
 }

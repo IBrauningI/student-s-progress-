@@ -1,10 +1,7 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using StudentsProgress.Web.Data;
 using StudentsProgress.Web.Data.Entities;
 using StudentsProgress.Web.Logics;
 
@@ -20,14 +17,12 @@ namespace StudentsProgress.Web.Controllers
             this.logic = logic;
         }
 
-
         public async Task<IActionResult> Index()
         {
             var groups = await logic.GetGroups();
 
             return View(groups);
         }
-
 
         public async Task<IActionResult> Details(int? id)
         {
@@ -36,16 +31,32 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var groups = await logic.GetGroups(id);
+            var group = await logic.GetGroup(id);
 
-            if (groups == null)
+            if (group == null)
             {
                 return NotFound();
             }
 
-            return View(groups);
+            return View(group);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Name")] Group group)
+        {
+            if (ModelState.IsValid)
+            {
+                await logic.CreateGroup(group);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(group);
+        }
 
         public async Task<IActionResult> Edit(int? id)
         {
@@ -54,23 +65,19 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var groups = await logic.GetGroups(id);
-
-            if (groups == null)
+            var group = await logic.GetGroup(id);
+            if (group == null)
             {
                 return NotFound();
             }
-            ViewData["GroupId"] = logic.GetStudentsSelectList(groups.StudentId);
-            ViewData["UserId"] = logic.GetSubjectsSelectList(groups.SubjectId);
-            return View(groups);
+            return View(group);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Faculty,GroupId,UserId")] Group groups)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Group group)
         {
-            if (id != groups.Id)
+            if (id != group.Id)
             {
                 return NotFound();
             }
@@ -79,11 +86,11 @@ namespace StudentsProgress.Web.Controllers
             {
                 try
                 {
-                    await logic.UpdateGroups(groups);
+                    await logic.UpdateGroup(group);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!logic.GroupsExists(groups.Id))
+                    if (!logic.GroupExists(group.Id))
                     {
                         return NotFound();
                     }
@@ -94,14 +101,8 @@ namespace StudentsProgress.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GroupId"] = logic.GetStudentsSelectList(groups.StudentId);
-            ViewData["UserId"] = logic.GetSubjectsSelectList(groups.SubjectId);
-
-            groups = await logic.GetGroups(id);
-
-            return View(groups);
+            return View(group);
         }
-
 
         public async Task<IActionResult> Delete(int? id)
         {
@@ -110,24 +111,24 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var groups = await logic.GetGroups();
-            if (groups == null)
+            var group = await logic.GetGroup(id);
+            if (group == null)
             {
                 return NotFound();
             }
 
-            return View(groups);
+            return View(group);
         }
-
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var groups = await logic.GetGroups();
+            var group = await logic.GetGroup(id);
+
+            await logic.DeleteGroup(group);
+           
             return RedirectToAction(nameof(Index));
         }
-
-
     }
 }

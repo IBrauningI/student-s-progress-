@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using StudentsProgress.Web.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using StudentsProgress.Web.Data.Entities;
 
 namespace StudentsProgress.Web.Logics
 {
@@ -12,16 +9,14 @@ namespace StudentsProgress.Web.Logics
     {
         Task<List<Student>> GetStudents();
 
-        Task<Student> GetStudents(int? id);
+        Task<Student> GetStudent(int? id);
 
-        Task UpdateStudents(Student students);
+        Task UpdateStudent(Student student);
 
-        bool StudentsExists(int id);
+        Task DeleteStudent(Student student);
 
+        bool StudentExists(int id);
 
-        SelectList GetStudentsSelectList(int studentId);
-
-        SelectList GetSubjectsSelectList(int subjectId);
-        object GetStudentsSelectList(object studentId);
+        SelectList GetGroupsSelectList(int groupId);
     }
 }

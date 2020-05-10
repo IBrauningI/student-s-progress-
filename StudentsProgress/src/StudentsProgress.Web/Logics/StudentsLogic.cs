@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentsProgress.Web.Data;
 using StudentsProgress.Web.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 
 namespace StudentsProgress.Web.Logics
 {
@@ -18,7 +16,6 @@ namespace StudentsProgress.Web.Logics
         {
             _context = context;
         }
-
 
         public async Task<List<Student>> GetStudents()
         {
@@ -34,71 +31,36 @@ namespace StudentsProgress.Web.Logics
             return students;
         }
 
-        public async Task<Student> GetStudents(int? id)
+        public async Task<Student> GetStudent(int? id)
         {
-            return await _context.Students
+            var student = await _context.Students
+                .Include(s => s.Group)
                 .Include(s => s.User)
-                .OrderBy(x => x.Faculty)
-                .ThenBy(x => x.Group)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+            return student;
         }
 
-
-
-        public async Task UpdateStudents(Student student)
+        public async Task UpdateStudent(Student student)
         {
             _context.Update(student);
             await _context.SaveChangesAsync();
         }
 
-        public bool StudentsExists(int id)
+        public async Task DeleteStudent(Student student)
+        {
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();
+        }
+
+        public bool StudentExists(int id)
         {
             return _context.Students.Any(e => e.Id == id);
         }
 
-        public SelectList GetStudentsSelectList(int studentId)
+        public SelectList GetGroupsSelectList(int groupId)
         {
-            return new SelectList(_context.Students, "Id", "Faculty", studentId);
-        }
-
-        public SelectList GetSubjectsSelectList(int subjectId)
-        {
-            return new SelectList(_context.Subjects, "Id", "Name", subjectId);
-        }
-
-        Task<List<Student>> IStudentsLogic.GetStudents()
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<Student> IStudentsLogic.GetStudents(int? id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task IStudentsLogic.UpdateStudents(Student students)
-        {
-            throw new NotImplementedException();
-        }
-
-        bool IStudentsLogic.StudentsExists(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        SelectList IStudentsLogic.GetStudentsSelectList(int studentId)
-        {
-            throw new NotImplementedException();
-        }
-
-        SelectList IStudentsLogic.GetSubjectsSelectList(int subjectId)
-        {
-            throw new NotImplementedException();
-        }
-
-        object IStudentsLogic.GetStudentsSelectList(object studentId)
-        {
-            throw new NotImplementedException();
+            return new SelectList(_context.Groups, "Id", "Name", groupId);
         }
     }
 }

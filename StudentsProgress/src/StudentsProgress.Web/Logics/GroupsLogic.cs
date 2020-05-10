@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using StudentsProgress.Web.Data;
 using StudentsProgress.Web.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 
 namespace StudentsProgress.Web.Logics
 {
@@ -19,76 +16,42 @@ namespace StudentsProgress.Web.Logics
             _context = context;
         }
 
-
         public async Task<List<Group>> GetGroups()
         {
-            var groups = await _context.Groups
-                .Include(x => x.Students)
-                .ThenInclude(x => x.User)
-                .ToListAsync();
-
-            return groups;
+            return await _context.Groups.OrderBy(x => x.Name).ToListAsync();
         }
 
-        public async Task<Group> GetGroups(int? id)
+        public async Task<Group> GetGroup(int? id)
         {
-            return await _context.Groups
+            var group = await _context.Groups
                 .Include(x => x.Students)
                 .ThenInclude(x => x.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+            return group;
         }
 
-
-
-        public async Task UpdateGroups(Group groups)
+        public async Task CreateGroup(Group group)
         {
-            _context.Update(groups);
+            _context.Add(group);
             await _context.SaveChangesAsync();
         }
 
-        public bool GroupsExists(int id)
+        public async Task UpdateGroup(Group group)
         {
-            return _context.Students.Any(e => e.Id == id);
+            _context.Update(group);
+            await _context.SaveChangesAsync();
         }
 
-        public SelectList GetStudentsSelectList(int studentId)
+        public async Task DeleteGroup(Group group)
         {
-            return new SelectList(_context.Students, "Id", "Faculty", studentId);
+            _context.Groups.Remove(group);
+            await _context.SaveChangesAsync();
         }
 
-        public SelectList GetSubjectsSelectList(int subjectId)
+        public bool GroupExists(int id)
         {
-            return new SelectList(_context.Subjects, "Id", "Name", subjectId);
+            return _context.Groups.Any(e => e.Id == id);
         }
-
-     
-
-        Task<Group> IGroupsLogic.GetGroups(int? id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task IGroupsLogic.UpdateGroups(Group groups)
-        {
-            throw new NotImplementedException();
-        }
-
-        bool IGroupsLogic.GroupsExists(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        SelectList IGroupsLogic.GetStudentsSelectList(int studentId)
-        {
-            throw new NotImplementedException();
-        }
-
-        
-
-        
-
-       
-
-        
     }
 }
