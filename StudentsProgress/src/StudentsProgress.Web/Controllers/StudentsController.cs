@@ -4,36 +4,28 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using StudentsProgress.Web.Data;
 using StudentsProgress.Web.Data.Entities;
+using StudentsProgress.Web.Logics;
 
 namespace StudentsProgress.Web.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class StudentsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IStudentsLogic logic;
 
-        public StudentsController(ApplicationDbContext context)
+        public StudentsController(IStudentsLogic logic)
         {
-            _context = context;
+            this.logic = logic;
         }
 
-        // GET: Students
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Students
-                .Include(s => s.Group)
-                .Include(s => s.User)
-                .OrderBy(x => x.Faculty)
-                .ThenBy(x => x.Group)
-                .ThenBy(x => x.User.LastName)
-                .ThenBy(x => x.User.FirstName);
+            var students = await logic.GetStudents();
 
-            return View(await applicationDbContext.ToListAsync());
+            return View(students);
         }
 
-        // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id, string callbackUrl = "/Students")
         {
             if (id == null)
@@ -41,10 +33,7 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .Include(s => s.Group)
-                .Include(s => s.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var student = await logic.GetStudent(id);
 
             if (student == null)
             {
@@ -59,7 +48,6 @@ namespace StudentsProgress.Web.Controllers
             return View(student);
         }
 
-        // GET: Students/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -67,22 +55,18 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .Include(x => x.User)
-                .FirstOrDefaultAsync(x => x.Id == id);
+            var student = await logic.GetStudent(id);
 
             if (student == null)
             {
                 return NotFound();
             }
-            ViewData["GroupId"] = new SelectList(_context.Groups, "Id", "Name", student.GroupId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", student.UserId);
+
+            ViewData["GroupId"] = logic.GetGroupsSelectList(student.GroupId);
+
             return View(student);
         }
 
-        // POST: Students/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Faculty,GroupId,UserId")] Student student)
@@ -96,12 +80,11 @@ namespace StudentsProgress.Web.Controllers
             {
                 try
                 {
-                    _context.Update(student);
-                    await _context.SaveChangesAsync();
+                    await logic.UpdateStudent(student);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.Id))
+                    if (!logic.StudentExists(student.Id))
                     {
                         return NotFound();
                     }
@@ -112,17 +95,14 @@ namespace StudentsProgress.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GroupId"] = new SelectList(_context.Groups, "Id", "Name", student.GroupId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", student.UserId);
 
-            student = await _context.Students
-                .Include(x => x.User)
-                .FirstOrDefaultAsync(x => x.Id == id);
+            ViewData["GroupId"] = logic.GetGroupsSelectList(student.GroupId);
+
+            student = await logic.GetStudent(id);
 
             return View(student);
         }
 
-        // GET: Students/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,10 +110,7 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .Include(s => s.Group)
-                .Include(s => s.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var student = await logic.GetStudent(id);
             if (student == null)
             {
                 return NotFound();
@@ -142,20 +119,13 @@ namespace StudentsProgress.Web.Controllers
             return View(student);
         }
 
-        // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var student = await _context.Students.FindAsync(id);
-            _context.Students.Remove(student);
-            await _context.SaveChangesAsync();
+            var student = await logic.GetStudent(id);
+            await logic.DeleteStudent(student);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool StudentExists(int id)
-        {
-            return _context.Students.Any(e => e.Id == id);
         }
     }
 }

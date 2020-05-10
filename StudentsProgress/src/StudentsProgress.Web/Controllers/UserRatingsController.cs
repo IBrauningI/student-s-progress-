@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentsProgress.Web.Data.Entities;
@@ -6,6 +7,7 @@ using StudentsProgress.Web.Logics;
 
 namespace StudentsProgress.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserRatingsController : Controller
     {
         private readonly IUserRatingsLogic logic;

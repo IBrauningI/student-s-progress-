@@ -48,6 +48,8 @@ namespace StudentsProgress.Web
             services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
             services.AddScoped<IUserRatingsLogic, UserRatingsLogic>();
             services.AddScoped<IAttendancesLogic, AttendancesLogic>();
+            services.AddScoped<IGroupsLogic, GroupsLogic>();
+            services.AddScoped<IStudentsLogic, StudentsLogic>();
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }
