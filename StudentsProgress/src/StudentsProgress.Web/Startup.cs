@@ -35,7 +35,7 @@ namespace StudentsProgress.Web
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services
-                .AddIdentity<ApplicationUser, IdentityRole>(options => 
+                .AddIdentity<ApplicationUser, IdentityRole>(options =>
                     options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddDefaultUI()
@@ -48,6 +48,7 @@ namespace StudentsProgress.Web
             services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
             services.AddScoped<IUserRatingsLogic, UserRatingsLogic>();
             services.AddScoped<IAttendancesLogic, AttendancesLogic>();
+            services.AddScoped<IStudentsLogic, StudentsLogic>();
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }

@@ -27,5 +27,7 @@ namespace StudentsProgress.Web.Data.Entities
         public virtual List<UserRating> UserRatings { get; set; }
 
         public virtual List<Attendance> Attendances { get; set; }
+        public int StudentId { get; internal set; }
+        public int SubjectId { get; internal set; }
     }
 }
