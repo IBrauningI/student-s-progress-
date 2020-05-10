@@ -49,6 +49,7 @@ namespace StudentsProgress.Web
             services.AddScoped<IUserRatingsLogic, UserRatingsLogic>();
             services.AddScoped<IAttendancesLogic, AttendancesLogic>();
             services.AddScoped<IStudentsLogic, StudentsLogic>();
+            services.AddScoped<IGroupsLogic, GroupsLogic>();
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }

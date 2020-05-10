@@ -14,5 +14,7 @@ namespace StudentsProgress.Web.Data.Entities
         public string Name { get; set; }
 
         public List<Student> Students { get; set; }
+        public int StudentId { get; internal set; }
+        public int SubjectId { get; internal set; }
     }
 }

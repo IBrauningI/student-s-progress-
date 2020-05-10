@@ -2,29 +2,33 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentsProgress.Web.Data;
 using StudentsProgress.Web.Data.Entities;
+using StudentsProgress.Web.Logics;
 
 namespace StudentsProgress.Web.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class GroupsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IGroupsLogic logic;
 
-        public GroupsController(ApplicationDbContext context)
+        public GroupsController(IGroupsLogic logic)
         {
-            _context = context;
+            this.logic = logic;
         }
 
-        // GET: Groups
+
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Groups.OrderBy(x => x.Name).ToListAsync());
+            var groups = await logic.GetGroups();
+
+            return View(groups);
         }
 
-        // GET: Groups/Details/5
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,42 +36,17 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var group = await _context.Groups
-                .Include(x => x.Students)
-                .ThenInclude(x => x.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var groups = await logic.GetGroups(id);
 
-            if (group == null)
+            if (groups == null)
             {
                 return NotFound();
             }
 
-            return View(group);
+            return View(groups);
         }
 
-        // GET: Groups/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
 
-        // POST: Groups/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Group @group)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(@group);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(@group);
-        }
-
-        // GET: Groups/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +54,23 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var @group = await _context.Groups.FindAsync(id);
-            if (@group == null)
+            var groups = await logic.GetGroups(id);
+
+            if (groups == null)
             {
                 return NotFound();
             }
-            return View(@group);
+            ViewData["GroupId"] = logic.GetStudentsSelectList(groups.StudentId);
+            ViewData["UserId"] = logic.GetSubjectsSelectList(groups.SubjectId);
+            return View(groups);
         }
 
-        // POST: Groups/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Group @group)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Faculty,GroupId,UserId")] Group groups)
         {
-            if (id != @group.Id)
+            if (id != groups.Id)
             {
                 return NotFound();
             }
@@ -99,12 +79,11 @@ namespace StudentsProgress.Web.Controllers
             {
                 try
                 {
-                    _context.Update(@group);
-                    await _context.SaveChangesAsync();
+                    await logic.UpdateGroups(groups);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GroupExists(@group.Id))
+                    if (!logic.GroupsExists(groups.Id))
                     {
                         return NotFound();
                     }
@@ -115,10 +94,15 @@ namespace StudentsProgress.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(@group);
+            ViewData["GroupId"] = logic.GetStudentsSelectList(groups.StudentId);
+            ViewData["UserId"] = logic.GetSubjectsSelectList(groups.SubjectId);
+
+            groups = await logic.GetGroups(id);
+
+            return View(groups);
         }
 
-        // GET: Groups/Delete/5
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +110,24 @@ namespace StudentsProgress.Web.Controllers
                 return NotFound();
             }
 
-            var @group = await _context.Groups
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (@group == null)
+            var groups = await logic.GetGroups();
+            if (groups == null)
             {
                 return NotFound();
             }
 
-            return View(@group);
+            return View(groups);
         }
 
-        // POST: Groups/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var @group = await _context.Groups.FindAsync(id);
-            _context.Groups.Remove(@group);
-            await _context.SaveChangesAsync();
+            var groups = await logic.GetGroups();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GroupExists(int id)
-        {
-            return _context.Groups.Any(e => e.Id == id);
-        }
+
     }
 }

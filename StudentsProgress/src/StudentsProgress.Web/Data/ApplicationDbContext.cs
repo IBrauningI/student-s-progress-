@@ -21,6 +21,7 @@ namespace StudentsProgress.Web.Data
         public DbSet<Attendance> Attendances { get; set; }
 
         public DbSet<UserRating> UserRatings { get; set; }
+        public object Group { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
