@@ -6,8 +6,6 @@ using StudentsProgress.Web.Logics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
-using AutoFixture;
-using AutoFixture.AutoMoq;
 
 namespace StudentsProgress.Tests
 {
