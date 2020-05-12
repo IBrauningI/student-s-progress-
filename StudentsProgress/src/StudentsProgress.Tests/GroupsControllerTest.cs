@@ -63,6 +63,32 @@ namespace StudentsProgress.Tests
                     viewResult.ViewData.Model);
                 mockLogic.Verify(s => s.GetGroups(), Times.Once);
             }
+
+            [Fact]
+            public async Task UpdateView_ReturnsAViewResult_WithData()
+            {
+                // Arrange
+                var gr = new Group()
+                {
+                    Id = 1,
+                    Name = "AMI31"
+                };               
+
+                var mockLogic = new Mock<IGroupsLogic>();
+                int groupId = 1;
+
+                mockLogic.Setup(repo => repo.GetGroup(groupId)).Returns(Task.FromResult(gr));
+                var controller = new GroupsController(mockLogic.Object);
+
+                //  Act
+                IActionResult actionResult = await controller.Edit(groupId, gr);
+
+                // Assert
+                var viewResult = Assert.IsType<RedirectToActionResult>(actionResult);
+                mockLogic.Verify(repo => repo.UpdateGroup(gr), Times.Once);
+
+            }
+            
         }
     }
 }

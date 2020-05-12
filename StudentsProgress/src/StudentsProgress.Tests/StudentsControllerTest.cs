@@ -6,8 +6,8 @@ using StudentsProgress.Web.Logics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
-using AutoFixture;
-using AutoFixture.AutoMoq;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 
 namespace StudentsProgress.Tests
 {
@@ -66,6 +66,36 @@ namespace StudentsProgress.Tests
                     viewResult.ViewData.Model);
                 mockLogic.Verify(s => s.GetStudents(), Times.Once);
             }
+            [Fact]
+            public async Task UpdateView_ReturnsAViewResult_WithData()
+            {
+                // Arrange
+                var model = new Student()
+                {
+                    Id = 1,
+                    Faculty = "AMI",
+                    Group = new Group { Name = "AMI31" },
+                    GroupId = 1,
+                    UserId = "1"
+                };
+                //int groupId = 1;
+                //var st = new SelectList(new List<Group>(), "1", "AMI31", groupId);
+                           
+                var mockLogic = new Mock<IStudentsLogic>();
+                int studentId = 1;
+                
+                mockLogic.Setup(repo => repo.GetStudent(studentId)).Returns(Task.FromResult(model));
+               // mockLogic.Setup(repo => repo.GetGroupsSelectList(groupId)).Returns(st);
+                var controller = new StudentsController(mockLogic.Object);
+                
+                //  Act
+                IActionResult actionResult = await controller.Edit(studentId, model);
+               
+                // Assert
+                var viewResult = Assert.IsType<RedirectToActionResult>(actionResult);
+                mockLogic.Verify(repo => repo.UpdateStudent(model), Times.Once);
+              
+            }            
         }
     }
 }

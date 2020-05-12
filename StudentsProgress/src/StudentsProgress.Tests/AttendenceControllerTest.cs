@@ -6,6 +6,7 @@ using StudentsProgress.Web.Logics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace StudentsProgress.Tests
 {
@@ -75,6 +76,34 @@ namespace StudentsProgress.Tests
                     viewResult.ViewData.Model);
                 mockLogic.Verify(s => s.GetAttendances(), Times.Once);
                 Assert.Equal(attes[0].Student.Faculty, model[0].Student.Faculty);
+            }
+
+            [Fact]
+            public async Task UpdateView_ReturnsAViewResult_WithData()
+            {
+                // Arrange
+                var attes = new Attendance()
+                {
+                    Id = 1,
+                    PassesCount = 3,
+                    StudentId = 1,
+                    SubjectId = 1,
+                    Student = new Student { Faculty = "AMI" }
+                };
+                
+                var mockLogic = new Mock<IAttendancesLogic>();
+                int attendanceId = 1;
+
+                mockLogic.Setup(repo => repo.GetAttendance(attendanceId)).Returns(Task.FromResult(attes));              
+                var controller = new AttendancesController(mockLogic.Object);
+
+                //  Act
+                IActionResult actionResult = await controller.Edit(attendanceId, attes);
+
+                // Assert
+                var viewResult = Assert.IsType<RedirectToActionResult>(actionResult);
+                mockLogic.Verify(repo => repo.UpdateAttendance(attes), Times.Once);
+
             }
         }
     }

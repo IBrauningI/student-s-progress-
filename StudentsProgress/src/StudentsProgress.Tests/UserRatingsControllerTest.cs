@@ -67,6 +67,35 @@ namespace StudentsProgress.Tests
                 mockLogic.Verify(s => s.GetUserRatings(), Times.Once);
 
             }
+
+            [Fact]
+            public async Task UpdateView_ReturnsAViewResult_WithData()
+            {
+                // Arrange
+                var rate = new UserRating()
+                {
+                    Id = 1,
+                    SemestrPoints = 43,
+                    SumPoints = 78,
+                    StudentId = 1,
+                    SubjectId = 1,
+                    Subject = new Subject { Name = "Math" }
+                };              
+
+                var mockLogic = new Mock<IUserRatingsLogic>();
+                int userRatId = 1;
+
+                mockLogic.Setup(repo => repo.GetUserRating(userRatId)).Returns(Task.FromResult(rate));
+                var controller = new UserRatingsController(mockLogic.Object);
+
+                //  Act
+                IActionResult actionResult = await controller.Edit(userRatId, rate);
+
+                // Assert
+                var viewResult = Assert.IsType<RedirectToActionResult>(actionResult);
+                mockLogic.Verify(repo => repo.UpdateUserRating(rate), Times.Once);
+
+            }
         }
     }
 }
