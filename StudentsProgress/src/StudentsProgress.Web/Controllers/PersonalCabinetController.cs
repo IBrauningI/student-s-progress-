@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentsProgress.Web.Data;
 using StudentsProgress.Web.Data.Identity;
+using StudentsProgress.Web.Logics;
 using StudentsProgress.Web.Models;
 
 namespace StudentsProgress.Web.Controllers
@@ -14,23 +15,21 @@ namespace StudentsProgress.Web.Controllers
     [Authorize(Roles = "Student")]
     public class PersonalCabinetController : Controller
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly ApplicationDbContext context;
+        private readonly IUserService userManager;
+        private readonly IPersonalCabinetLogic logic;
 
         public PersonalCabinetController(
-            UserManager<ApplicationUser> userManager,
-            ApplicationDbContext context)
+            IUserService userService,
+            IPersonalCabinetLogic logic)
         {
-            this.userManager = userManager;
-            this.context = context;
+            this.userManager = userService;
+            this.logic = logic;
         }
 
         public async Task<IActionResult> AccountManager()
         {
-            var user = await userManager.GetUserAsync(User);
-            var student = context.Students
-                .Include(x => x.Group)
-                .FirstOrDefault(x => x.UserId == user.Id);
+            var user = await userManager.GetApplicationUser(User);
+            var student = await logic.GetStudentById(user.Id);
 
             if (student == null)
             {
@@ -51,18 +50,18 @@ namespace StudentsProgress.Web.Controllers
 
         public async Task<IActionResult> Rating()
         {
-            var user = await userManager.GetUserAsync(User);
-            var student = context.Students
-                .FirstOrDefault(x => x.UserId == user.Id);
+            var user = await userManager.GetApplicationUser(User);
+            var student = await logic.GetStudentById(user.Id);
+               
 
             if (student == null)
             {
                 throw new Exception("User is not found");
             }
-
-            var ratings = context.UserRatings
-                .Include(x => x.Subject)
-                .Where(x => x.StudentId == student.Id);
+            var ratings = await logic.GetRateById(student.Id);
+            //var ratings = context.UserRatings
+            //    .Include(x => x.Subject)
+            //    .Where(x => x.StudentId == student.Id);
 
 
             var viewModel = ratings.Select(rating => new RatingViewModel
@@ -77,25 +76,27 @@ namespace StudentsProgress.Web.Controllers
 
         public async Task<IActionResult> Attendance()
         {
-            var user = await userManager.GetUserAsync(User);
-            var student = context.Students
-                .FirstOrDefault(x => x.UserId == user.Id);
+
+            var user = await userManager.GetApplicationUser(User);
+            var student = await logic.GetStudentById(user.Id);
+            //var student = context.Students
+            //    .FirstOrDefault(x => x.UserId == user.Id);
 
             if (student == null)
             {
                 throw new Exception("User is not found");
             }
-
-            var attendances = context.Attendances
-                .Include(x => x.Subject)
-                .Where(x => x.StudentId == student.Id);
+            var attendances = await logic.GetAttendanceById(student.Id);
+            //var attendances = context.Attendances
+            //    .Include(x => x.Subject)
+            //    .Where(x => x.StudentId == student.Id);
 
             var viewModel = attendances.Select(attendance => new AttendanceViewModel
             {
                 PassesCount = attendance.PassesCount,
                 LecturesCount = attendance.Subject.LecturesCount,
                 Subject = attendance.Subject.Name,
-            });
+            }).ToList();
 
             return View(viewModel);
         }
@@ -103,7 +104,7 @@ namespace StudentsProgress.Web.Controllers
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
-            context.Dispose();
+            logic.Dispose(disposing);
         }
     }
 }

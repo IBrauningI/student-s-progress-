@@ -50,6 +50,8 @@ namespace StudentsProgress.Web
             services.AddScoped<IAttendancesLogic, AttendancesLogic>();
             services.AddScoped<IStudentsLogic, StudentsLogic>();
             services.AddScoped<IGroupsLogic, GroupsLogic>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPersonalCabinetLogic, PersonalCabinetLogic>();
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }
