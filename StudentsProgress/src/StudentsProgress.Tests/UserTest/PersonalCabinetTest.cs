@@ -26,6 +26,7 @@ namespace StudentsProgress.Tests.UserTest
         [Fact]
         public void AttendanceThrowException_WhenUserNull()
         {
+            // Arrange
             var identity = new IdentityUser()
             {
                 Id = "1"
@@ -39,8 +40,6 @@ namespace StudentsProgress.Tests.UserTest
             mockUserManager.Setup(x => x.GetApplicationUser(user)).Returns(Task.FromResult(new ApplicationUser()));
             var mockLogic = new Mock<IPersonalCabinetLogic>();
 
-            //setup mockLOgic
-
             var controller = new PersonalCabinetController(mockUserManager.Object, mockLogic.Object);
 
             controller.ControllerContext = new ControllerContext()
@@ -48,13 +47,14 @@ namespace StudentsProgress.Tests.UserTest
                 HttpContext = new DefaultHttpContext() { User = user }
             };
 
-
+            // Assert
             Assert.ThrowsAsync<Exception>(() => controller.Attendance());
         }
 
         [Fact]
         public async Task ReturnsCorrectData_AttendanceAsync()
         {
+            // Arrange
             var identity = new IdentityUser()
             {
                 Id = "1"
@@ -93,19 +93,80 @@ namespace StudentsProgress.Tests.UserTest
             {
                 HttpContext = new DefaultHttpContext() { User = user }
             };
+            //  Act
             var res = await controller.Attendance();
-            //var res = await controller.AccountManager();
+
+            // Assert
             var viewResult = Assert.IsType<ViewResult>(res);
 
             var model = Assert.IsAssignableFrom<List<AttendanceViewModel>>(
                    viewResult.ViewData.Model);
-            //var model2 = Assert.IsAssignableFrom<Student>(
-            //       viewResult.ViewData.Model);
             Assert.Equal(model[0].Subject, atees[0].Subject.Name);
             Assert.Equal(model[0].LecturesCount, atees[0].Subject.LecturesCount);
             Assert.Equal(model[0].PassesCount, atees[0].PassesCount);
-            // mockLogic.Verify(s => s.GetAttendanceById(), Times.Once);
+
 
         }
+
+        [Fact]
+        public async Task ReturnsCorrectData_RatingAsync()
+        {
+            // Arrange
+            var identity = new IdentityUser()
+            {
+                Id = "1"
+            };
+            var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, identity.Id),
+            }, "mock"));
+
+            var mockUserManager = new Mock<IUserService>();
+            mockUserManager.Setup(x => x.GetApplicationUser(user)).Returns(Task.FromResult(new ApplicationUser()
+            {
+                Id = "1"
+            }));
+            var mockLogic = new Mock<IPersonalCabinetLogic>();
+            var usrating = new List<UserRating>()
+            {
+                new UserRating
+                {
+                    Id=1,
+                   SemestrPoints=32,
+                   SumPoints=64,
+                   Subject = new Subject { Name = "Math"}
+                }
+            };
+            var stud = new Student()
+            {
+                Id = 1
+            };
+            mockLogic.Setup(logic => logic.GetRateById(1)).Returns(Task.FromResult(usrating));
+            mockLogic.Setup(logic => logic.GetStudentById("1")).Returns(Task.FromResult(stud));
+
+
+            var controller = new PersonalCabinetController(mockUserManager.Object, mockLogic.Object);
+
+            controller.ControllerContext = new ControllerContext()
+            {
+                HttpContext = new DefaultHttpContext() { User = user }
+            };
+
+            //  Act
+            var res = await controller.Rating();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(res);
+
+            var model = Assert.IsAssignableFrom<List<RatingViewModel>>(
+                   viewResult.ViewData.Model);
+            Assert.Equal(model[0].SemestrPoints, usrating[0].SemestrPoints);
+            Assert.Equal(model[0].SumPoints, usrating[0].SumPoints);
+            Assert.Equal(model[0].Subject, usrating[0].Subject.Name);
+
+
+        }
+
+
     }
 }

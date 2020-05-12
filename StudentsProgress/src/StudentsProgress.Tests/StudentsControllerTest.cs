@@ -78,24 +78,49 @@ namespace StudentsProgress.Tests
                     GroupId = 1,
                     UserId = "1"
                 };
-                //int groupId = 1;
-                //var st = new SelectList(new List<Group>(), "1", "AMI31", groupId);
-                           
+
                 var mockLogic = new Mock<IStudentsLogic>();
                 int studentId = 1;
-                
+
                 mockLogic.Setup(repo => repo.GetStudent(studentId)).Returns(Task.FromResult(model));
-               // mockLogic.Setup(repo => repo.GetGroupsSelectList(groupId)).Returns(st);
                 var controller = new StudentsController(mockLogic.Object);
-                
+
                 //  Act
                 IActionResult actionResult = await controller.Edit(studentId, model);
-               
+
                 // Assert
                 var viewResult = Assert.IsType<RedirectToActionResult>(actionResult);
                 mockLogic.Verify(repo => repo.UpdateStudent(model), Times.Once);
-              
-            }            
+
+            }
+
+            [Fact]
+            public async Task UpdateDelete_ReturnsAViewResult()
+            {
+                // Arrange
+                var model = new Student()
+                {
+                    Id = 1,
+                    Faculty = "AMI",
+                    Group = new Group { Name = "AMI31" },
+                    GroupId = 1,
+                    UserId = "1"
+                };
+
+                var mockLogic = new Mock<IStudentsLogic>();
+                int studentId = 1;
+
+                mockLogic.Setup(repo => repo.GetStudent(studentId)).Returns(Task.FromResult(model));
+                var controller = new StudentsController(mockLogic.Object);
+
+                //  Act
+                IActionResult actionResult = await controller.DeleteConfirmed(studentId);
+
+                // Assert
+                var viewResult = Assert.IsType<RedirectToActionResult>(actionResult);
+                mockLogic.Verify(repo => repo.DeleteStudent(model), Times.Once);
+
+            }
         }
     }
 }

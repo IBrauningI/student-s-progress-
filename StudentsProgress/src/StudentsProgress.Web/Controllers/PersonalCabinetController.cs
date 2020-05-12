@@ -52,24 +52,20 @@ namespace StudentsProgress.Web.Controllers
         {
             var user = await userManager.GetApplicationUser(User);
             var student = await logic.GetStudentById(user.Id);
-               
+
 
             if (student == null)
             {
                 throw new Exception("User is not found");
             }
             var ratings = await logic.GetRateById(student.Id);
-            //var ratings = context.UserRatings
-            //    .Include(x => x.Subject)
-            //    .Where(x => x.StudentId == student.Id);
-
 
             var viewModel = ratings.Select(rating => new RatingViewModel
             {
                 SemestrPoints = rating.SemestrPoints,
                 SumPoints = rating.SumPoints,
                 Subject = rating.Subject.Name,
-            });
+            }).ToList(); ;
 
             return View(viewModel);
         }
@@ -79,17 +75,12 @@ namespace StudentsProgress.Web.Controllers
 
             var user = await userManager.GetApplicationUser(User);
             var student = await logic.GetStudentById(user.Id);
-            //var student = context.Students
-            //    .FirstOrDefault(x => x.UserId == user.Id);
 
             if (student == null)
             {
                 throw new Exception("User is not found");
             }
             var attendances = await logic.GetAttendanceById(student.Id);
-            //var attendances = context.Attendances
-            //    .Include(x => x.Subject)
-            //    .Where(x => x.StudentId == student.Id);
 
             var viewModel = attendances.Select(attendance => new AttendanceViewModel
             {

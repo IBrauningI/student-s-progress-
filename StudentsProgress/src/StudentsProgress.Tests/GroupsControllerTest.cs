@@ -72,7 +72,7 @@ namespace StudentsProgress.Tests
                 {
                     Id = 1,
                     Name = "AMI31"
-                };               
+                };
 
                 var mockLogic = new Mock<IGroupsLogic>();
                 int groupId = 1;
@@ -88,7 +88,32 @@ namespace StudentsProgress.Tests
                 mockLogic.Verify(repo => repo.UpdateGroup(gr), Times.Once);
 
             }
-            
+
+            [Fact]
+            public async Task UpdateDelete_ReturnsAViewResult()
+            {
+                // Arrange
+                var gr = new Group()
+                {
+                    Id = 1,
+                    Name = "AMI31"
+                };
+
+                var mockLogic = new Mock<IGroupsLogic>();
+                int groupId = 1;
+
+                mockLogic.Setup(repo => repo.GetGroup(groupId)).Returns(Task.FromResult(gr));
+                var controller = new GroupsController(mockLogic.Object);
+
+                //  Act
+                IActionResult actionResult = await controller.DeleteConfirmed(groupId);
+
+                // Assert
+                var viewResult = Assert.IsType<RedirectToActionResult>(actionResult);
+                mockLogic.Verify(repo => repo.DeleteGroup(gr), Times.Once);
+
+            }
+
         }
     }
 }
